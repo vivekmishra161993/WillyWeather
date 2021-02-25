@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WillWeatherTest</string>
+    <string name="title">Title</string>
+    <string name="company_name">Company Name</string>
+    <string name="location">Location</string>
+    <string name="no_data">No Data Found</string>
+    <string name="error_msg">Error fetching records</string>
 </resources>

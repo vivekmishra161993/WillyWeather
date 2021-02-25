@@ -4,21 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.app.willyweathertest.network.models.Jobs
 
-class JobsViewModel(val repo: JobsRepo) : ViewModel() {
-//    private var upcomingOrdersGroupAdapter = UpcomingOrdersGroupAdapter()
+class JobsViewModel(private val repo: JobsRepo) : ViewModel() {
+    private var jobsAdapter = JobsAdapter()
 
     fun getJobs(): LiveData<Pair<Boolean, ArrayList<Jobs>>> {
         return repo.getJobs();
     }
 
-    /*fun getJobsAdapter(): UpcomingOrdersGroupAdapter {
-        return upcomingOrdersGroupAdapter
+    fun getJobsAdapter(): JobsAdapter {
+        return jobsAdapter
 
     }
 
     fun setJobsList(orderList: ArrayList<Jobs>){
-        upcomingOrdersGroupAdapter.setOrderItems(orderList)
+        jobsAdapter.setItems(orderList)
 
-    }*/
+    }
 
 }
