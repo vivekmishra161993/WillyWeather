@@ -2,11 +2,12 @@ package com.app.willyweathertest.jobs
 
 import com.app.willyweathertest.R
 import com.app.willyweathertest.databinding.ItemJobsBinding
+import com.app.willyweathertest.interfaces.OnItemClick
 import com.app.willyweathertest.network.models.Jobs
 import com.app.willyweathertest.utils.BaseAdapter
 import com.app.willyweathertest.utils.BaseViewHolder
 
-class JobsAdapter():BaseAdapter() {
+class JobsAdapter(private val onItemClick: OnItemClick):BaseAdapter() {
     private val jobList=ArrayList<Jobs>()
     override val size: Int
         get() = jobList.size
@@ -16,6 +17,9 @@ class JobsAdapter():BaseAdapter() {
     override fun onBindHolder(holder: BaseViewHolder, position: Int) {
         (holder.binding as ItemJobsBinding).apply {
             this.model=jobList[position]
+        }
+        holder.binding.cvJobs.setOnClickListener {
+            onItemClick.onItemClick(position)
         }
     }
     fun setItems(list: ArrayList<Jobs>){

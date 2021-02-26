@@ -13,12 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_marginTop="@dimen/margin_5dp"
+        android:layout_marginBottom="@dimen/margin_5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="@dimen/margin_5dp"
-        app:cardElevation="@dimen/margin_5dp">
+        app:cardElevation="@dimen/margin_5dp"
+        android:id="@+id/cv_jobs">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -64,7 +66,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                android:layout_marginTop="@dimen/margin_8dp" />
+                android:layout_marginTop="@dimen/margin_10dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_company"
@@ -77,7 +79,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_company_label"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                android:layout_marginTop="@dimen/margin_8dp" />
+                android:layout_marginTop="@dimen/margin_10dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_location_label"
@@ -91,8 +93,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/tv_location"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_company_label"
-                android:layout_marginTop="@dimen/margin_8dp" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_company"
+                android:layout_marginTop="@dimen/margin_10dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_location"
@@ -105,7 +107,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_location_label"
-                android:layout_marginTop="@dimen/margin_8dp" />
+                android:layout_marginTop="@dimen/margin_10dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>
