@@ -3,13 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     buildToolsVersion "29.0.3"
-
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
     defaultConfig {
         applicationId "com.app.willyweathertest"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -20,8 +22,13 @@ android {
         dataBinding true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
     buildTypes {
         release {
@@ -33,6 +40,7 @@ android {
 def room_version = "2.2.6"
 def koin_version = "2.0.1"
 def coroutinesVersion = "1.1.1"
+def fragment_version = "1.2.5"
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -48,12 +56,13 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp-urlconnection:3.0.1"
     implementation "com.squareup.okhttp3:logging-interceptor:3.4.1"
     implementation 'androidx.cardview:cardview:1.0.0'
-
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"

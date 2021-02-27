@@ -84,7 +84,7 @@ class JobsFragment: Fragment(),OnItemClick {
         GlobalScope.launch {
             dataBaHelperImpl.deleteAllJobs()
         }
-            jobsViewModel.getJobs().observe(this, Observer {
+            jobsViewModel.getJobs().observe(viewLifecycleOwner, Observer {
 
                 if (it.first) {
                     if (it.second != null && it.second.size > 0) {
@@ -130,7 +130,7 @@ class JobsFragment: Fragment(),OnItemClick {
     }
     private fun isInternetAvailable(): Boolean {
         val connectivityManager =
-            context!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return connectivityManager.activeNetworkInfo != null && connectivityManager.activeNetworkInfo.isConnected
     }
 

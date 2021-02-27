@@ -2,11 +2,11 @@ package com.app.willyweathertest.utils
 import androidx.annotation.IdRes
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : FragmentActivity() {
 
     protected open fun addFragment(
         @IdRes containerViewId: Int,
