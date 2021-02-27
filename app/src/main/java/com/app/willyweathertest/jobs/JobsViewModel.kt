@@ -2,8 +2,11 @@ package com.app.willyweathertest.jobs
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.app.willyweathertest.databases.DatabaseHelperImpl
 import com.app.willyweathertest.interfaces.OnItemClick
 import com.app.willyweathertest.network.models.Jobs
+import kotlinx.coroutines.launch
 
 class JobsViewModel(private val repo: JobsRepo) : ViewModel() {
     private lateinit var jobsAdapter:JobsAdapter
@@ -21,6 +24,14 @@ class JobsViewModel(private val repo: JobsRepo) : ViewModel() {
     fun setJobsList(orderList: ArrayList<Jobs>){
         jobsAdapter.setItems(orderList)
         jobsAdapter.notifyDataSetChanged()
+
+    }
+    fun getJobsFromDatabase(dataBaHelperImpl:DatabaseHelperImpl):ArrayList<Jobs>{
+        val jobsList=ArrayList<Jobs>()
+        viewModelScope.launch {
+           jobsList.addAll(dataBaHelperImpl.getJobs())
+        }
+        return jobsList
 
     }
 

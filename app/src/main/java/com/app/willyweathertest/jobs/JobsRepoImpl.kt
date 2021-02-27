@@ -1,7 +1,6 @@
 package com.app.willyweathertest.jobs
 
 import android.annotation.SuppressLint
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.willyweathertest.network.ApiClient
@@ -12,11 +11,8 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 
-class JobsRepoImpl(application: Application):JobsRepo {
-    private var application:Application?=null
-    init {
-        this.application=application
-    }
+class JobsRepoImpl():JobsRepo {
+
     @SuppressLint("CheckResult")
     override fun getJobs(): LiveData<Pair<Boolean, ArrayList<Jobs>>> {
         val liveData= MutableLiveData<Pair<Boolean, ArrayList<Jobs>>>()

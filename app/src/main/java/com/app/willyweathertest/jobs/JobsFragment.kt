@@ -55,9 +55,7 @@ class JobsFragment: Fragment(),OnItemClick {
                 getJobs()
             }
         }else{
-            GlobalScope.launch {
-                jobsList.addAll(dataBaHelperImpl.getJobs())
-            }
+            jobsList=jobsViewModel.getJobsFromDatabase(dataBaHelperImpl)
             Handler(Looper.getMainLooper()).postDelayed({
                 jobsViewModel.setJobsList(jobsList)
             }, 100)
