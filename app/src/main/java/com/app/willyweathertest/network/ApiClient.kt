@@ -1,6 +1,5 @@
 package com.app.willyweathertest.network
 
-import android.content.Context
 import com.app.willyweathertest.constants.Constants
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
@@ -13,9 +12,9 @@ object ApiClient {
     private var retrofit: Retrofit? = null
     private const val REQUEST_TIMEOUT = 60
     private var okHttpClient: OkHttpClient? = null
-    fun getClient(context: Context): Retrofit {
+    fun getClient(): Retrofit {
         if (okHttpClient == null)
-            initOkHttp(context)
+            initOkHttp()
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -27,7 +26,7 @@ object ApiClient {
         return retrofit!!
     }
 
-    private fun initOkHttp(context: Context) {
+    private fun initOkHttp() {
         val httpClient = OkHttpClient().newBuilder()
             .connectTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
             .readTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)

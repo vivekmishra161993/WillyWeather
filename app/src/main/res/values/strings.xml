@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">WillWeatherTest</string>
+    <string name="app_name">WillyWeatherTest</string>
     <string name="title">Title</string>
     <string name="company_name">Company Name</string>
     <string name="location">Location</string>
     <string name="no_data">No Data Found</string>
     <string name="error_msg">Error fetching records</string>
+    <string name="willy_weather">Willy Weather</string>
 </resources>

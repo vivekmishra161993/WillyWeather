@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.app.willyweathertest.MainActivity
 import com.app.willyweathertest.databinding.FragmentJobDetailsBinding
 import com.app.willyweathertest.network.models.Jobs
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class JobsDetailFragment: Fragment() {
     private lateinit var binding: FragmentJobDetailsBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentJobDetailsBinding.inflate(inflater, container, false)
 
@@ -25,6 +28,10 @@ class JobsDetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClasses()
+        (requireActivity()as MainActivity).iv_back.visibility=View.VISIBLE
+        (requireActivity()as MainActivity).iv_back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
     }
     private fun initClasses() {

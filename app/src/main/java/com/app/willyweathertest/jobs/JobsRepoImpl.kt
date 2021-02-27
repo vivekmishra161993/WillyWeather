@@ -20,7 +20,7 @@ class JobsRepoImpl(application: Application):JobsRepo {
     @SuppressLint("CheckResult")
     override fun getJobs(): LiveData<Pair<Boolean, ArrayList<Jobs>>> {
         val liveData= MutableLiveData<Pair<Boolean, ArrayList<Jobs>>>()
-        val apiClient= ApiClient.getClient(application!!.applicationContext).create(ApiInterface::class.java)
+        val apiClient= ApiClient.getClient().create(ApiInterface::class.java)
         apiClient!!.fetchJobs().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribeWith(
             object : DisposableSingleObserver<ArrayList<Jobs>>() {
                 @SuppressLint("CheckResult")

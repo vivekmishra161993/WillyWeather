@@ -20,7 +20,9 @@ class JobsViewModel(private val repo: JobsRepo) : ViewModel() {
 
     fun setJobsList(orderList: ArrayList<Jobs>){
         jobsAdapter.setItems(orderList)
+        jobsAdapter.notifyDataSetChanged()
 
     }
+
 
 }
