@@ -55,9 +55,10 @@ class JobsFragment: Fragment(),OnItemClick {
                 getJobs()
             }
         }else{
-            jobsList=jobsViewModel.getJobsFromDatabase(dataBaHelperImpl)
+            jobsList=jobsViewModel.getJobsFromDatabase()
             Handler(Looper.getMainLooper()).postDelayed({
-                jobsViewModel.setJobsList(jobsList)
+                adapter.setItems(jobsList)
+                adapter.notifyDataSetChanged()
             }, 100)
 
         }
@@ -70,7 +71,7 @@ class JobsFragment: Fragment(),OnItemClick {
         binding.lifecycleOwner = this
         binding.executePendingBindings()
         binding.rvJobs.layoutManager = LinearLayoutManager(context)
-        adapter = jobsViewModel.getJobsAdapter(this)
+        adapter = JobsAdapter(this)
         binding.rvJobs.adapter = adapter
         jobsList= ArrayList()
         dataBaHelperImpl= DatabaseHelperImpl(JobsDatabase.getInstance(requireContext()))
@@ -88,7 +89,7 @@ class JobsFragment: Fragment(),OnItemClick {
                     if (it.second != null && it.second.size > 0) {
                         jobsList.clear()
                         jobsList.addAll(it.second)
-                        jobsViewModel.setJobsList(jobsList)
+                        adapter.setItems(jobsList)
                         adapter.notifyDataSetChanged()
                         dialogUtility.hideProgressDialog()
                         GlobalScope.launch {

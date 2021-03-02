@@ -3,6 +3,9 @@ package com.app.willyweathertest.jobs
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.app.willyweathertest.application.MyApplication
+import com.app.willyweathertest.databases.DatabaseHelperImpl
+import com.app.willyweathertest.databases.JobsDatabase
 import com.app.willyweathertest.network.ApiClient
 import com.app.willyweathertest.network.ApiInterface
 import com.app.willyweathertest.network.models.Jobs
@@ -11,7 +14,7 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 
-class JobsRepoImpl():JobsRepo {
+class JobsRepoImpl:JobsRepo {
 
     @SuppressLint("CheckResult")
     override fun getJobs(): LiveData<Pair<Boolean, ArrayList<Jobs>>> {
@@ -36,6 +39,11 @@ class JobsRepoImpl():JobsRepo {
 
             })
         return liveData
+    }
+
+    override suspend fun getJobsFromDatabase(): ArrayList<Jobs> {
+        val databaseHelperImpl=DatabaseHelperImpl(JobsDatabase.getInstance(MyApplication.instance?.applicationContext!!))
+        return databaseHelperImpl.getJobs()
     }
 
 }

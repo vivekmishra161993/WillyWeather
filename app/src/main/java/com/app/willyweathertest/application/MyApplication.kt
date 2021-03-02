@@ -9,14 +9,12 @@ import org.koin.core.context.startKoin
 
 class MyApplication : Application() {
 
-    private val TAG = "MyApplication"
-
     init {
         instance = this
     }
 
     companion object {
-        private var instance: MyApplication? = null
+         var instance: MyApplication? = null
 
     }
 

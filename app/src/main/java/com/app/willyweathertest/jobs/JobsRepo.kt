@@ -5,5 +5,5 @@ import com.app.willyweathertest.network.models.Jobs
 
 interface JobsRepo  {
     fun getJobs(): LiveData<Pair<Boolean,ArrayList<Jobs>>>
-
+    suspend fun getJobsFromDatabase():ArrayList<Jobs>
 }
